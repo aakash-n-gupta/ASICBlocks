@@ -78,56 +78,54 @@ module fifo_tb;
     resetn = '1;
     #10;
 
-    push(1);
-    wr_en = 0;
-    rd_en = 1;
-    #30;
-  for (int i = 0; i < 10; i++ )  begin
-    push(1);
-    wr_en = 0;
-    rd_en = 1;
-  end
+  //   push(1);
+  //   wr_en = 0;
+  //   rd_en = 1;
+  //   #50;
+  // for (int i = 0; i < 10; i++ )  begin
+  //   push(1);
+  //   wr_en = 0;
+  //   rd_en = 1;
+  // end
+  // wr_en = 1;
 
 
-    // $display("Push 24 data in");
-    // push(24);
-    // $display("Pop 20 data out");
-    // #20;
-    // pop(24);
-    // $display("Pop 4 data out");
-    // pop(4);
-    // rd_en = '1;
-    // wr_en  = '0;
-    // data_in = '0;
-    // #100;
-    // $display("--------------------------------");
-    // $display("TEST1: Fill fifo to %d", MAX);
-    // push(MAX);
-    // $display("Pushed %d words into FIFO", MAX);
-    // $display("Starting to read data from fifo");
-    // pop(MAX);
-    // $display("--------------------------------");
-    // $display("TEST1: Fill fifo to %d Complete", MAX);
+    $display("Push 24 data in");
+    push(24);
+    $display("Pop 20 data out");
+    pop(20);
+    $display("Pop 4 data out");
+    pop(4);
+    rd_en = '1;
+    wr_en  = '0;
+    data_in = '0;
+    #100;
+    $display("--------------------------------");
+    $display("TEST1: Fill fifo to %d", MAX);
+    push(100);
+    $display("Pushed %d words into FIFO", MAX);
+    $display("Starting to read data from fifo");
+    pop(100);
+    $display("--------------------------------");
+    $display("TEST1: Fill fifo to %d Complete", MAX);
 
-
-    // // Test reset\
-    // $display("TEST2: TEST RESET");
-    // resetn = '0;
-    // rd_en = '0;
-    // #50;
-    // resetn = '1;
-    // #100;
-    // $display("FIFO State|| Full = %d  Empty = %d", full, empty);
-    // $display("");
-    // $display("--------------------------------");
-    // $display("TEST3: fifo Overflow");
-    // $display("Push %d words into FIFO", (MAX+5));
-    // push(MAX+5);
-    // $display("Overflow FIFO");
-    // $display("Starting to read data from fifo, after overflow");
-    // pop(MAX+5);
-    // $display("--------------------------------");
-    // $display("TEST3: fifo Overflow completed");
+    // Test reset\
+    $display("TEST2: TEST RESET");
+    resetn = '0;
+    rd_en = '0;
+    #50;
+    resetn = '1;
+    #100;
+    $display("FIFO State|| Full = %d  Empty = %d", full, empty);
+    $display("");
+    $display("--------------------------------");
+    $display("TEST3: FIFO Overflow");
+    $display("Push %d words into FIFO", (MAX+5));
+    push(MAX+5);
+    $display("Starting to read data from fifo, after overflow");
+    pop(MAX+5);
+    $display("--------------------------------");
+    $display("TEST3: fifo Overflow completed");
 
     #100;
     $finish;

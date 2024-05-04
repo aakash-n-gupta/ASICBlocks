@@ -9,7 +9,7 @@ module fifo #(parameter int DEPTH = 256) (
 
     output full,
     output empty,
-    output logic [31:0] data);
+    output [31:0] data);
 
     logic [31:0] data_read;
     logic [31:0] data_write;
@@ -49,22 +49,14 @@ module fifo #(parameter int DEPTH = 256) (
         end
     end
 
-    //  Push data into FIFO @wr_ptr
+    // Keep track of read pointer
     always_ff @(posedge clock)
     begin
-        if (!full && wr_en) begin
-            data_write <= data_in;
-        end
-    end
-
-    // read data from FIFO head
-    always_ff @(posedge clock)
-    begin
+        rd_ptr <= '0;
         if (!resetn) begin
             rd_ptr <= '0;
         end
         if (!empty && rd_en) begin
-            data <= data_read;
             rd_ptr <= rd_ptr + 1;
         end
     end
@@ -72,5 +64,8 @@ module fifo #(parameter int DEPTH = 256) (
     // if wr_ptr = MAX, fifo full, if 0, fifo empty
     assign full     = (wr_ptr == '1);
     assign empty    = (wr_ptr == '0);
+
+    assign data = (!empty && rd_en) ? data_read : 'X;
+    assign data_write = (!full && wr_en) ? data_in : 'x;
 
 endmodule
