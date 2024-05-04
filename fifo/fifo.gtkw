@@ -1,0 +1,61 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Sat May  4 08:38:43 2024
+[*]
+[dumpfile] "/home/ang/work/ASICBlocks/fifo/fifo.vcd"
+[dumpfile_mtime] "Sat May  4 08:38:26 2024"
+[dumpfile_size] 4654
+[savefile] "/home/ang/work/ASICBlocks/fifo/fifo.gtkw"
+[timestart] 0
+[size] 2560 1403
+[pos] -1 -1
+*-5.000000 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+[markername] AA
+[markername] BB
+[markername] CC
+[markername] DD
+[markername] EE
+[markername] FF
+[markername] GG
+[markername] HH
+[markername] II
+[markername] JJ
+[markername] KK
+[markername] LL
+[markername] MM
+[markername] NN
+[markername] OO
+[markername] PP
+[markername] QQ
+[markername] RR
+[markername] SS
+[markername] TT
+[markername] UU
+[markername] VV
+[markername] WW
+[markername] XX
+[markername] YY
+[markername] ZZ
+[treeopen] TOP.
+[treeopen] TOP.fifo_tb.
+[sst_width] 273
+[signals_width] 142
+[sst_expanded] 1
+[sst_vpaned_height] 429
+@28
+TOP.fifo_tb.clock
+TOP.fifo_tb.resetn
+TOP.fifo_tb.wr_en
+@22
+TOP.fifo_tb.data_in[31:0]
+@28
+TOP.fifo_tb.rd_en
+@22
+TOP.fifo_tb.data_out[31:0]
+@28
+TOP.fifo_tb.s_fifo.empty
+@24
+TOP.fifo_tb.s_fifo.rd_ptr[7:0]
+TOP.fifo_tb.s_fifo.wr_ptr[7:0]
+[pattern_trace] 1
+[pattern_trace] 0
