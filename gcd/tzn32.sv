@@ -18,7 +18,8 @@ module tzn32 #(WIDTH = 32) (
         if(a_i == '0)
             numz = 32;
         casex (a_i)
-            32'hxxxx_xxx1: numz = 1;
+            32'hxxxx_xxx1: numz = 0;
+            32'hxxxx_xxx2: numz = 1;
             32'hxxxx_xxx4: numz = 2;
             32'hxxxx_xxx8: numz = 3;
             32'hxxxx_xx10: numz = 4;
