@@ -57,14 +57,8 @@ module mult_control
     end
 
     // Output logic
-    always_comb
-    begin
-        {ready, done} = {1, 0};
-        case (current_state)
-            READY   : {ready, done} = {1, 0};
-            OPERATE : {ready, done} = {0, 0};
-            DONE    : {ready, done} = {0, 1};
-        endcase
-    end
+
+    assign ready    = (current_state == READY) ? 1 : 0;
+    assign done     = (current_state == DONE)  ? 1 : 0;
 
 endmodule

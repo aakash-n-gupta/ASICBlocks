@@ -66,6 +66,7 @@ module mult_datapath_tb;
         ld_input = 0;
         #40;
         done = 1;
+        state = 2;
         $display("Product = %d", product);
 
         // Do some things in meanwhile
