@@ -10,4 +10,10 @@ Tests, PPA results and rtl source is containded in the respective directories.
 
 ## Highlights
 
+### SRAM based FIFO
+Used asap7 fakeram to generate SRAM macro on chip. Created a SRAM based FIFO, which does require read and write pointers, unlike the FIFO here[SynthCraft], which is register based and has implicit reads from the FIFO head.
+
+### Instruction Fetch
+
+
 **Add interesing findings and results**
