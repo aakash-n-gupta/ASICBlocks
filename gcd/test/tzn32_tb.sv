@@ -27,17 +27,20 @@ initial begin
 end
 
 initial begin
-    #5;
+    #20;
     for (int i = 0; i < CYCLES; i++ )  begin
         data_in = i;
         #10;
         $display("i = %0d data_in %0b | trailing Zeros = %d", i, data_in, trailing_zeros);
     end
 
-    data_in = 6;
+    data_in = 18;
     #10;
     $display("data_in %0b | trailing Zeros = %d", data_in, trailing_zeros);
 
+    data_in = 48;
+    #10;
+    $display("data_in %0b | trailing Zeros = %d", data_in, trailing_zeros);
 
     $finish;
 end
