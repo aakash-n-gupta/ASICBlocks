@@ -52,7 +52,10 @@ module mult_datapath #(parameter XLEN = 16)
     always_comb
     begin
         if      (!resetn)           a_reg = '0;
-        else if (ld_input)          a_reg =  a;
+        else begin
+            a_reg = 0;
+            if (ld_input)          a_reg =  a;
+        end
     end
 
     always_ff @(posedge clk)
@@ -66,7 +69,7 @@ module mult_datapath #(parameter XLEN = 16)
                 // OPERATE: partial_product <= partial_product + a_reg;
                 OPERATE: begin
                         if (!cntz)
-                            partial_product <= partial_product + a_reg;
+                            partial_product <= partial_product + {{ (XLEN-1){1'b0}} , a_reg};
                         else
                             partial_product <= partial_product;
                     end
