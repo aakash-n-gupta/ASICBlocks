@@ -1,0 +1,67 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Wed May 15 18:55:26 2024
+[*]
+[dumpfile] "/home/ang/work/ASICBlocks/simple_mult/mult.vcd"
+[dumpfile_mtime] "Wed May 15 18:50:30 2024"
+[dumpfile_size] 3639
+[savefile] "/home/ang/work/ASICBlocks/simple_mult/mult.gtkw"
+[timestart] 0
+[size] 2181 769
+[pos] 784 976
+*-14.000000 76430 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+[markername] AA
+[markername] BB
+[markername] CC
+[markername] DD
+[markername] EE
+[markername] FF
+[markername] GG
+[markername] HH
+[markername] II
+[markername] JJ
+[markername] KK
+[markername] LL
+[markername] MM
+[markername] NN
+[markername] OO
+[markername] PP
+[markername] QQ
+[markername] RR
+[markername] SS
+[markername] TT
+[markername] UU
+[markername] VV
+[markername] WW
+[markername] XX
+[markername] YY
+[markername] ZZ
+[treeopen] mult_tb.
+[treeopen] mult_tb.DUT.
+[sst_width] 273
+[signals_width] 198
+[sst_expanded] 1
+[sst_vpaned_height] 207
+@28
+mult_tb.clk_i
+mult_tb.resetn_i
+mult_tb.ld_input_i
+mult_tb.ready_o
+@24
+mult_tb.a_i[15:0]
+mult_tb.b_i[15:0]
+@28
+mult_tb.valid_o
+@24
+mult_tb.product_o[31:0]
+mult_tb.DUT.datapath.partial_product[31:0]
+@28
+mult_tb.DUT.controller.current_state[1:0]
+@29
+mult_tb.DUT.controller.next_state[1:0]
+@28
+mult_tb.DUT.controller.eqz
+@22
+mult_tb.DUT.datapath.countB[15:0]
+[pattern_trace] 1
+[pattern_trace] 0
