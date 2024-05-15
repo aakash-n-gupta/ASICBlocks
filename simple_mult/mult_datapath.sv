@@ -30,6 +30,7 @@ module mult_datapath #(parameter XLEN = 16)
     // downcounter for B
     logic [XLEN-1:0] countB;
     logic [XLEN-1:0] a_reg;
+    logic cntz;
 
     always_ff @(posedge clk)
     begin
@@ -48,10 +49,10 @@ module mult_datapath #(parameter XLEN = 16)
 
     logic [2*XLEN-1:0] partial_product;
 
-    always_ff @(posedge clk)
+    always_comb
     begin
-        if      (!resetn)           a_reg <= '0;
-        else if (ld_input)          a_reg <=  a;
+        if      (!resetn)           a_reg = '0;
+        else if (ld_input)          a_reg =  a;
     end
 
     always_ff @(posedge clk)
@@ -59,17 +60,24 @@ module mult_datapath #(parameter XLEN = 16)
         if (!resetn)
             partial_product <= '0;
         else begin
-            partial_product <= 0;
+            partial_product <= '0;
             case (state)
                 READY: partial_product <= 0;
-                OPERATE: partial_product <= partial_product + a_reg;
+                // OPERATE: partial_product <= partial_product + a_reg;
+                OPERATE: begin
+                        if (!cntz)
+                            partial_product <= partial_product + a_reg;
+                        else
+                            partial_product <= partial_product;
+                    end
                 DONE: partial_product <= partial_product;
             endcase
         end
     end
 
     // Output assignments
-    assign eqz = (countB == 0) ? 1 : 0;
-    assign product = (state == DONE) ? partial_product : 'Z;
+    assign eqz = cntz;
+    assign cntz = (countB == 0) ? 1 : 0;
+    assign product = (state == DONE) ? partial_product : 'z;
 
 endmodule
