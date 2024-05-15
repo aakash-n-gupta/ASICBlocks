@@ -32,7 +32,7 @@ module mult #(parameter XLEN = 16)
     mult_datapath #(.XLEN(XLEN)) datapath (
                                         .clk(clk_i),
                                         .resetn(resetn_i),
-                                        .ld_inputs(ld_input_i),
+                                        .ld_input(ld_input_i),
 
                                         // inputs from control
                                         .state(current_state),
