@@ -1,4 +1,6 @@
 **obj_dir/
+**build
 **/*.vcd
 **/*.out
 **/*.hex
+.vscode
