@@ -2,3 +2,4 @@
 **/*.vcd
 **/*.hex
 **/*.out
+*vscode

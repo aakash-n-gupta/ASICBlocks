@@ -49,12 +49,15 @@ module mult_datapath #(parameter XLEN = 16)
 
     logic [2*XLEN-1:0] partial_product;
 
-    always_comb
-    begin
-        if      (!resetn)           a_reg = '0;
+    always_ff @(posedge clk) begin
+        if (!resetn)
+            a_reg <= 0;
         else begin
-            a_reg = 0;
-            if (ld_input)          a_reg =  a;
+            if (ld_input) begin
+                a_reg <= a;
+            end
+            else
+                a_reg <= a_reg;
         end
     end
 
