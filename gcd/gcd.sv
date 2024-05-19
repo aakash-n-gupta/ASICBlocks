@@ -10,34 +10,16 @@
 
 module gcd #(parameter XLEN = 32)
 (
-    input clk_i,
-    input resetn_i,
-    input [XLEN-1:0] a_i,
-    input [XLEN-1:0] b_i,
-    output [XLEN-1:0] gcd_o,
-    output [XLEN-1:0] valid_o
+    input               clk_i,
+    input               resetn_i,
+    input               ld_i,
+
+    input [XLEN-1:0]    a_i,
+    input [XLEN-1:0]    b_i,
+
+    output[XLEN-1:0]    gcd_o,
+    output              ready_o,
+    output              valid_o
 );
-    // compare and set variables for subscequent calculation
-    logic [XLEN-1:0] greater_value;
-    logic [XLEN-1:0] smaller_value;
-
-    logic [XLEN-1:0] gcd_val;
-
-    always_comb 
-    begin
-        if(a_i > b_i) begin
-            greater_value = a_i;
-            smaller_value = b_i;
-        end
-        else if (a_i == b_i)
-            gcd_val = a_i;
-
-        else begin
-        greater_value = b_i;
-        smaller_value = a_i;
-        end
-    end
-
-    // if a and b both even, divide by 2, d times, till one becomes odd
     
 endmodule
