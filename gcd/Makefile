@@ -4,9 +4,10 @@ TEST_DIR := test
 BUILD_DIR := build
 OUTPUT := output
 GTKW := waves
-TARGET ?= tzn32
+TARGET ?= gcd
 
 # List of Verilog source files
+INCLUDES := $(wildcard $(SRC_DIR)/$(TARGET)_*.sv)
 SOURCES := $(wildcard $(SRC_DIR)/$(TARGET).sv)
 TESTS 	:= $(wildcard $(TEST_DIR)/$(TARGET)_tb.sv)
 
@@ -24,11 +25,11 @@ VERILATOR := verilator
 VERILATOR_FLAGS := --lint-only -Wall
 
 # Compile target
-compile: $(SOURCES) $(BUILD_DIR)/$(TARGET)
+compile: $(INCLUDES) $(SOURCES) $(BUILD_DIR)/$(TARGET)
 
 # Rule to create binary
-$(BUILD_DIR)/$(TARGET): $(SOURCES) | $(BUILD_DIR)
-	$(VERILOG) $(VERILOG_FLAGS) -o $@ $(SOURCES) $(TESTS)
+$(BUILD_DIR)/$(TARGET): $(INCLUDES) $(SOURCES) | $(BUILD_DIR)
+	$(VERILOG) $(VERILOG_FLAGS) -o $@ $(INCLUDES) $(SOURCES) $(TESTS)
 
 # Rule to run lint
 lint: $(SOURCES)
