@@ -1,0 +1,75 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Tue May 21 17:01:54 2024
+[*]
+[dumpfile] "/home/ang/work/ASICBlocks/gcd/gcd.vcd"
+[dumpfile_mtime] "Tue May 21 16:29:04 2024"
+[dumpfile_size] 8994
+[savefile] "/home/ang/work/ASICBlocks/gcd/gcd.gtkw"
+[timestart] 0
+[size] 1945 818
+[pos] 196 196
+*-14.000000 46610 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+[markername] AA
+[markername] BB
+[markername] CC
+[markername] DD
+[markername] EE
+[markername] FF
+[markername] GG
+[markername] HH
+[markername] II
+[markername] JJ
+[markername] KK
+[markername] LL
+[markername] MM
+[markername] NN
+[markername] OO
+[markername] PP
+[markername] QQ
+[markername] RR
+[markername] SS
+[markername] TT
+[markername] UU
+[markername] VV
+[markername] WW
+[markername] XX
+[markername] YY
+[markername] ZZ
+[treeopen] gcd_tb.
+[treeopen] gcd_tb.DUT.
+[treeopen] gcd_tb.DUT.datapath.
+[sst_width] 273
+[signals_width] 258
+[sst_expanded] 1
+[sst_vpaned_height] 225
+@28
+gcd_tb.clk_i
+gcd_tb.resetn_i
+gcd_tb.ld_i
+@24
+gcd_tb.a_i[31:0]
+gcd_tb.b_i[31:0]
+@28
+gcd_tb.ready_o
+gcd_tb.valid_o
+@24
+gcd_tb.gcd_o[31:0]
+gcd_tb.DUT.datapath.b_r[31:0]
+gcd_tb.DUT.datapath.a_r[31:0]
+@28
+gcd_tb.DUT.state_w[2:0]
+gcd_tb.DUT.altb_w
+gcd_tb.DUT.eq_w
+gcd_tb.DUT.controller.eq
+gcd_tb.DUT.datapath.eq
+@24
+gcd_tb.DUT.datapath.a_r[31:0]
+gcd_tb.DUT.datapath.b_r[31:0]
+gcd_tb.DUT.datapath.gcd_w[31:0]
+@22
+gcd_tb.DUT.datapath.shamt_a[4:0]
+@23
+gcd_tb.DUT.datapath.shamt_b[4:0]
+[pattern_trace] 1
+[pattern_trace] 0
