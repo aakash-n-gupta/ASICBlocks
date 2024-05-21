@@ -21,5 +21,38 @@ module gcd #(parameter XLEN = 32)
     output              ready_o,
     output              valid_o
 );
-    
+
+    import gcd_pkg::*;
+
+    logic eq_w, altb_w;
+    gcd_pkg::state_t state_w;
+
+    gcd_control controller (
+        .clk(clk_i),
+        .resetn(resetn_i),
+        .ld_i(ld_i),
+
+        .eq(eq_w),
+        .altb(altb_w),
+
+        .ready(ready_o),
+        .done(valid_o),
+        .state(state_w)
+    );
+
+
+    gcd_datapath #(.XLEN(XLEN)) datapath (
+        .clk(clk_i),
+        .resetn(resetn_i),
+
+        .ld_i(ld_i),
+        .a_i(a_i),
+        .b_i(b_i),
+
+        .state(state_w),
+        .eq(eq_w),
+        .altb(altb_w),
+        .gcd(gcd_o)
+    );
+
 endmodule
