@@ -2,16 +2,19 @@
 
 // Find number of trailing zeros
 // If the input is all zeros
+// this module can also be called find_first_one
 
 
 module tzn32 #(WIDTH = 32) (
     input [WIDTH-1:0] a_i,
-    output [$clog2(WIDTH):0] numz_o
+    output [$clog2(WIDTH)-1:0] numz_o,
+    output all_zeros_o
 );
 
     logic [$clog2(WIDTH):0] numz;
 
     assign numz_o = numz;
+    assign all_zeros_o = numz[$clog2(WIDTH)];
 
     always_comb begin
         numz = 'z;
