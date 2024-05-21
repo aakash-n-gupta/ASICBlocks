@@ -14,17 +14,17 @@ module gcd_control (
     input eq,
     input altb,
 
-
     // output to top
     output ready,
     output done,
 
     // outputs to datapath
     output gcd_pkg::state_t state
-
+    // output state_t state
 );
+    import gcd_pkg::*;
 
-    state_t current_state, next_state;
+    gcd_pkg::state_t current_state, next_state;
 
     // Update to next state
     always_ff @(posedge clk)
@@ -54,8 +54,8 @@ module gcd_control (
                 CMP: begin
                     if (eq)             next_state = DONE;
                     else begin
-                        if (altb)       next_state = DIVA;
-                        else            next_state = DIVB;
+                        if (altb)       next_state = DIVB;
+                        else            next_state = DIVA;
                     end
                 end
                 DIVA: next_state = CMP;
