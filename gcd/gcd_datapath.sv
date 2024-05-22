@@ -59,7 +59,7 @@ module gcd_datapath #( parameter XLEN = 32)
         end
     end
 
-    tzn32 #(.WIDTH(XLEN)) reduceA(.a_i(a_r), .numz_o(shamt_a), .all_zeros_o(sink_a));
+    tzn16 #(.WIDTH(XLEN)) reduceA(.a_i(a_r), .numz_o(shamt_a), .all_zeros_o(sink_a));
 
     always_ff @(posedge clk) begin
         if (!resetn)
@@ -77,7 +77,7 @@ module gcd_datapath #( parameter XLEN = 32)
     end
 
     // reduce a and b to odd values
-    tzn32 #(.WIDTH(XLEN)) reduceB(.a_i(b_r), .numz_o(shamt_b), .all_zeros_o(sink_b));
+    tzn16 #(.WIDTH(XLEN)) reduceB(.a_i(b_r), .numz_o(shamt_b), .all_zeros_o(sink_b));
 
     // Comparator
     assign eq_w   = (a_r == b_r) ? 1'b1 : 1'b0;
