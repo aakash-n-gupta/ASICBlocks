@@ -7,17 +7,20 @@
 //
 // dump-vcd: False
 // verilator-xinit: zeros
+
+`timescale 1ns / 1ps
+
 //module GcdUnit
 module gcd_ref
 (
   input  wire clk,
-  input  wire [  31:0] req_msg,
-  output wire req_rdy,
   input  wire req_val,
-  input  wire reset,
-  output wire [  15:0] resp_msg,
   input  wire resp_rdy,
-  output wire resp_val
+  input  wire reset,
+  input  wire [  31:0] req_msg,
+  output wire [  15:0] resp_msg,
+  output wire resp_val,
+  output wire req_rdy
 );
 
   // ctrl temporaries
