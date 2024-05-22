@@ -2,7 +2,7 @@
 
 module gcd_tb;
 
-    parameter XLEN = 32;
+    parameter XLEN = 16;
     parameter TEST_CYCLES = 100;
     int cycles = 0;
 
@@ -15,7 +15,6 @@ module gcd_tb;
 
 
     gcd #(.XLEN(XLEN)) DUT(.*);
-
 
     always #5 clk_i = ~clk_i;
     always #10 cycles = cycles + 1;
@@ -48,24 +47,52 @@ module gcd_tb;
         #20;
         // start the datapath operations
         $display("cycle count before GCD input: %d", cycles);
-        gcd_inputs(34, 289);
-        $display("cycle count after GCD input : %d", cycles);
+
+        gcd_inputs(48, 18);
+        for (int i = 0; i < TEST_CYCLES; i++ )  begin
+            #10;
+            if(valid_o) begin
+                $display("Cycle Count for GCD = %d", cycles);
+                break;
+                end
+        end
+
+        resetn_i = 0;
+        #20;
+        gcd_inputs(1701, 199);
 
         for (int i = 0; i < TEST_CYCLES; i++ )  begin
             #10;
-            if(valid_o)
-                $display("cycle count: %d when gcd Complete", cycles);
+            if(valid_o) begin
+                $display("Cycle Count for GCD = %d", cycles);
+                break;
+                end
         end
 
-        // $display("cycle count before GCD input: %d", cycles);
-        // gcd_inputs(1701, 199);
-        // $display("cycle count after GCD input : %d", cycles);
+        resetn_i = 0;
+        #20;
+        gcd_inputs(22000, 19900);
 
-        // for (int i = 0; i < TEST_CYCLES; i++ )  begin
-        //     #10;
-        //     if(valid_o)
-        //         $display("cycle count: %d when gcd Complete", cycles);
-        // end
+        for (int i = 0; i < TEST_CYCLES; i++ )  begin
+            #10;
+            if(valid_o) begin
+                $display("Cycle Count for GCD = %d", cycles);
+                break;
+                end
+        end
+
+        resetn_i = 0;
+        #20;
+        gcd_inputs(17, 289);
+
+        for (int i = 0; i < TEST_CYCLES; i++ )  begin
+            #10;
+            if(valid_o) begin
+                $display("Cycle Count for GCD = %d", cycles);
+                break;
+                end
+        end
+
 
         $finish;
 
