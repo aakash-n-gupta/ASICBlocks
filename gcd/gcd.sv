@@ -24,7 +24,7 @@ module gcd #(parameter XLEN = 32)
 
     import gcd_pkg::*;
 
-    logic eq_w, altb_w;
+    logic eq_w;
     gcd_pkg::state_t state_w;
 
     gcd_control controller (
@@ -33,8 +33,6 @@ module gcd #(parameter XLEN = 32)
         .ld_i(ld_i),
 
         .eq(eq_w),
-        .altb(altb_w),
-
         .ready(ready_o),
         .done(valid_o),
         .state(state_w)
@@ -51,7 +49,6 @@ module gcd #(parameter XLEN = 32)
 
         .state(state_w),
         .eq(eq_w),
-        .altb(altb_w),
         .gcd(gcd_o)
     );
 
