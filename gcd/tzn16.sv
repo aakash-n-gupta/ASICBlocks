@@ -13,13 +13,11 @@ module tzn16 #(WIDTH = 16) (
 
     logic [$clog2(WIDTH):0] numz;
 
-    assign numz_o = numz;
+    assign numz_o = numz[$clog2(WIDTH)-1:0];
     assign all_zeros_o = numz[$clog2(WIDTH)];
 
     always_comb begin
-        numz = 'z;
-        if(a_i == '0)
-            numz = 32;
+        numz = '0;
         casex (a_i)
             16'bxxxx_xxxx_xxxx_xxx1: numz = 0;
             16'bxxxx_xxxx_xxxx_xx10: numz = 1;
@@ -37,6 +35,7 @@ module tzn16 #(WIDTH = 16) (
             16'bxx10_0000_0000_0000: numz = 13;
             16'bx100_0000_0000_0000: numz = 14;
             16'b1000_0000_0000_0000: numz = 15;
+            16'b0000_0000_0000_0000: numz = 16;
         endcase
     end
     endmodule
