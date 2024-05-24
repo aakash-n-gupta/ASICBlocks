@@ -12,7 +12,6 @@ module gcd_control (
 
     // inputs coming from datapath
     input eq,
-    input altb,
 
     // output to top
     output ready,
@@ -49,17 +48,12 @@ module gcd_control (
                     else           next_state = LOAD;
                 end
 
-                LOAD: next_state = ODD;
-                ODD: next_state = CMP;
-                CMP: begin
+                LOAD:                   next_state = ODD;
+                ODD:                    next_state = COMPUTE;
+                COMPUTE: begin
                     if (eq)             next_state = DONE;
-                    else begin
-                        if (altb)       next_state = DIVB;
-                        else            next_state = DIVA;
-                    end
+                    else                next_state = ODD;
                 end
-                DIVA: next_state = CMP;
-                DIVB: next_state = CMP;
                 DONE: next_state = READY;
             endcase
         end
