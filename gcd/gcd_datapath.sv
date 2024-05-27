@@ -115,7 +115,7 @@ module gcd_datapath #( parameter XLEN = 16)
         end
     end
 
-    assign final_shamt = (shamt_a >= shamt_b) ? shamt_b : shamt_b;
+    assign final_shamt = (shamt_a >= shamt_b) ? shamt_b : shamt_a;
 
     assign gcd_w =  (a_r << gcd_shamt);
     assign gcd = (state == DONE) ? gcd_w : 'Z;

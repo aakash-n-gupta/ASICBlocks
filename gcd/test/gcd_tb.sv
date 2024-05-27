@@ -58,7 +58,7 @@ module gcd_tb;
         end
 
         resetn_i = 0;
-        #20;
+        #10;
         gcd_inputs(1701, 199);
 
         for (int i = 0; i < TEST_CYCLES; i++ )  begin
@@ -70,7 +70,7 @@ module gcd_tb;
         end
 
         resetn_i = 0;
-        #20;
+        #10;
         gcd_inputs(22000, 19900);
 
         for (int i = 0; i < TEST_CYCLES; i++ )  begin
@@ -82,8 +82,32 @@ module gcd_tb;
         end
 
         resetn_i = 0;
-        #20;
+        #10;
+        gcd_inputs(42000, 1990);
+
+        for (int i = 0; i < TEST_CYCLES; i++ )  begin
+            #10;
+            if(valid_o) begin
+                $display("Cycle Count for GCD = %d", cycles);
+                break;
+                end
+        end
+
+        resetn_i = 0;
+        #10;
         gcd_inputs(17, 289);
+
+        for (int i = 0; i < TEST_CYCLES; i++ )  begin
+            #10;
+            if(valid_o) begin
+                $display("Cycle Count for GCD = %d", cycles);
+                break;
+                end
+        end
+
+        resetn_i = 0;
+        #10;
+        gcd_inputs(40664, 57408);
 
         for (int i = 0; i < TEST_CYCLES; i++ )  begin
             #10;

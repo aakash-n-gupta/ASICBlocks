@@ -48,9 +48,7 @@ module gcd_ref_tb;
         reset = 1;
         req_msg = '0;
         req_val = 0;
-        #30;
-
-
+        #20;
         // start the datapath operations
         $display("cycle count before GCD input: %d", cycles);
 
@@ -77,7 +75,7 @@ module gcd_ref_tb;
         end
 
         reset = 1;
-        #20;
+        #10;
         gcd_inputs(22000, 19900);
         for (int i = 0; i < TEST_CYCLES; i++ )  begin
             #10;
@@ -88,8 +86,20 @@ module gcd_ref_tb;
             end
         end
 
+        reset = 1;
+        #10;
+        gcd_inputs(42000, 1990);
+        for (int i = 0; i < TEST_CYCLES; i++ )  begin
+            #10;
+            if(resp_val) begin
+                $display("Cycle Count for GCD = %d", cycles);
+                $display("GCD = %d", resp_msg);
+                break;
+            end
+        end
+
          reset = 1;
-        #20;
+        #10;
         gcd_inputs(17, 289);
         $display("cycle count after GCD input : %d", cycles);
 
@@ -102,8 +112,19 @@ module gcd_ref_tb;
                 end
         end
 
+        reset = 1;
+        #10;
+        gcd_inputs(40664, 57408);
+        for (int i = 0; i < TEST_CYCLES; i++ )  begin
+            #10;
+            if(resp_val) begin
+                $display("Cycle Count for GCD = %d", cycles);
+                $display("GCD = %d", resp_msg);
+                break;
+            end
+        end
 
-        #100;
+
         $finish;
 
     end
